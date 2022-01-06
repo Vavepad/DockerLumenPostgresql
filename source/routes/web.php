@@ -15,7 +15,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->group(['prefix' => 'user'], function () use ($router) {
         $router->post('register', 'AuthController@register');
         $router->post('sign-in', 'AuthController@postLogin');
-        $router->post('recover-password', 'AuthController@recoverPassword');
+        $router->match(['post', 'patch'], 'recover-password', 'AuthController@recoverPassword');
     });
 });
 $router->group(['middleware' => 'auth'], function () use ($router) {
